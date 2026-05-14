@@ -1,0 +1,57 @@
+{
+  "devices": [
+    {
+      "id": "esp32_01",
+      "name": "Refad Node Alpha",
+      "type": "ESP32-S3",
+      "status": "online",
+      "lastSeen": "2026-05-14T09:27:13.786Z"
+    },
+    {
+      "id": "arduino_uno_02",
+      "name": "Refad Climate Sensor",
+      "type": "Arduino Uno",
+      "status": "online",
+      "lastSeen": "2026-05-14T09:27:13.788Z"
+    },
+    {
+      "id": "sim_node_03",
+      "name": "Refad Virtual Node",
+      "type": "Simulation",
+      "status": "online",
+      "lastSeen": "2026-05-14T09:27:13.788Z"
+    }
+  ],
+  "telemetry": [],
+  "commands": [],
+  "groups": [
+    {
+      "id": "group-1",
+      "name": "Smart Factory A",
+      "description": "Main manufacturing line devices",
+      "createdAt": "2026-05-14T09:27:13.788Z"
+    },
+    {
+      "id": "group-2",
+      "name": "Office HVAC",
+      "description": "Level 4 climate control",
+      "createdAt": "2026-05-14T09:27:13.788Z"
+    }
+  ],
+  "group_members": [
+    {
+      "group_id": "group-1",
+      "device_id": "esp32_01"
+    },
+    {
+      "group_id": "group-1",
+      "device_id": "arduino_uno_02"
+    },
+    {
+      "group_id": "group-2",
+      "device_id": "sim_node_03"
+    }
+  ],
+  "nextTelemetryId": 1,
+  "nextCommandId": 1
+}

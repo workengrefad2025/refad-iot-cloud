@@ -1,0 +1,87 @@
+{
+  "entities": {
+    "organization": {
+      "title": "Organization",
+      "description": "Multi-tenant organization entity",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "ownerId": { "type": "string" }
+      },
+      "required": ["name", "ownerId"]
+    },
+    "user": {
+      "title": "User",
+      "description": "User profile with organization link",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "orgId": { "type": "string" },
+        "role": { "type": "string", "enum": ["admin", "editor", "viewer"] }
+      },
+      "required": ["email", "orgId"]
+    },
+    "device": {
+      "title": "Device",
+      "description": "IoT device entity",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "type": { "type": "string" },
+        "status": { "type": "string", "enum": ["online", "offline", "provisioning"] },
+        "orgId": { "type": "string" },
+        "lastSeen": { "type": "string", "format": "date-time" },
+        "metadata": { "type": "object" },
+        "groupIds": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": ["name", "orgId", "status"]
+    },
+    "deviceGroup": {
+      "title": "Device Group",
+      "description": "Logical grouping of devices for bulk operations",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "orgId": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "orgId"]
+    },
+    "telemetry": {
+      "title": "Telemetry",
+      "description": "Sensor data from devices",
+      "type": "object",
+      "properties": {
+        "deviceId": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "data": { "type": "object" }
+      },
+      "required": ["deviceId", "timestamp", "data"]
+    }
+  },
+  "firestore": {
+    "organizations/{orgId}": {
+      "schema": "organization",
+      "description": "Organizations collection"
+    },
+    "users/{userId}": {
+      "schema": "user",
+      "description": "User profiles"
+    },
+    "devices/{deviceId}": {
+      "schema": "device",
+      "description": "Devices collection"
+    },
+    "deviceGroups/{groupId}": {
+      "schema": "deviceGroup",
+      "description": "Device groups for management"
+    },
+    "devices/{deviceId}/telemetry/{telemetryId}": {
+      "schema": "telemetry",
+      "description": "Real-time telemetry subcollection"
+    }
+  }
+}

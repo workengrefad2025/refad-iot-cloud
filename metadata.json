@@ -1,0 +1,6 @@
+{
+  "name": "Refad IoT Platform",
+  "description": "A premium futuristic IoT dashboard designed and developed by Refad Saeed for real-time telemetry and device control.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["Real-time Data", "Device Control", "Branded Platform"]
+}
