@@ -14,6 +14,7 @@ import {
   Linkedin,
   Github
 } from 'lucide-react';
+import { FaWhatsapp } from 'react-icons/fa';
 import GlassCard from '../ui/GlassCard';
 
 export default function LandingPage({ onStart }: { onStart: () => void }) {
@@ -30,7 +31,7 @@ export default function LandingPage({ onStart }: { onStart: () => void }) {
           </div>
           
           <div className="hidden md:flex items-center gap-8">
-            {['Features', 'Architecture', 'Pricing', 'Docs'].map(item => (
+            {['Features', 'Architecture', 'Pricing', 'Contact'].map(item => (
               <a key={item} href={`#${item.toLowerCase()}`} className="text-xs font-bold uppercase tracking-widest text-slate-400 hover:text-white transition-colors">{item}</a>
             ))}
           </div>
@@ -217,6 +218,59 @@ export default function LandingPage({ onStart }: { onStart: () => void }) {
         </div>
       </section>
 
+      {/* Contact Section */}
+      <section id="contact" className="py-32 relative">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-20 space-y-4">
+            <h2 className="text-[10px] font-black uppercase tracking-[0.4em] text-accent">Get In Touch</h2>
+            <h3 className="text-4xl md:text-5xl font-black uppercase tracking-tight">Connect With Me</h3>
+            <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+              Let's discuss your IoT projects, automation solutions, or collaboration opportunities.
+            </p>
+          </div>
+
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="max-w-2xl mx-auto"
+          >
+            <GlassCard className="p-12 text-center">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+                <SocialLink 
+                  icon={Linkedin} 
+                  label="LinkedIn" 
+                  href="https://www.linkedin.com/in/refad-saeed-31467b378" 
+                  color="blue"
+                />
+                <SocialLink 
+                  icon={Facebook} 
+                  label="Facebook" 
+                  href="https://www.facebook.com/share/19haPVZn6Y/" 
+                  color="blue"
+                />
+                <SocialLink 
+                  icon={Github} 
+                  label="GitHub" 
+                  href="https://github.com/workengrefad2025" 
+                  color="gray"
+                />
+                <SocialLink 
+                  icon={FaWhatsapp} 
+                  label="WhatsApp" 
+                  href="https://wa.me/60177738987" 
+                  color="green"
+                />
+              </div>
+              <p className="text-sm text-slate-500">
+                Available for consulting, development projects, and technical discussions.
+              </p>
+            </GlassCard>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="py-20 border-t border-white/5 bg-[#030305]">
         <div className="max-w-7xl mx-auto px-6">
@@ -233,11 +287,38 @@ export default function LandingPage({ onStart }: { onStart: () => void }) {
                 through decentralized edge architecture. Designed by Refad Saeed.
               </p>
               <div className="flex gap-4">
-                {[Twitter, Linkedin, Github, Facebook].map((Icon, i) => (
-                  <a key={i} href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-slate-400 hover:text-accent hover:bg-accent/10 transition-all">
-                    <Icon className="w-4 h-4" />
-                  </a>
-                ))}
+                <a 
+                  href="https://www.linkedin.com/in/refad-saeed-31467b378" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-slate-400 hover:text-blue-400 hover:bg-blue-400/10 transition-all hover:scale-110"
+                >
+                  <Linkedin className="w-4 h-4" />
+                </a>
+                <a 
+                  href="https://www.facebook.com/share/19haPVZn6Y/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-slate-400 hover:text-blue-600 hover:bg-blue-600/10 transition-all hover:scale-110"
+                >
+                  <Facebook className="w-4 h-4" />
+                </a>
+                <a 
+                  href="https://github.com/workengrefad2025" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-slate-400 hover:text-gray-300 hover:bg-gray-300/10 transition-all hover:scale-110"
+                >
+                  <Github className="w-4 h-4" />
+                </a>
+                <a 
+                  href="https://wa.me/60177738987" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-slate-400 hover:text-green-400 hover:bg-green-400/10 transition-all hover:scale-110"
+                >
+                  <FaWhatsapp size={16} />
+                </a>
               </div>
             </div>
             
@@ -270,6 +351,36 @@ export default function LandingPage({ onStart }: { onStart: () => void }) {
         </div>
       </footer>
     </div>
+  );
+}
+
+function SocialLink({ icon: Icon, label, href, color }: any) {
+  const colorMap: any = {
+    blue: 'hover:text-blue-400 hover:bg-blue-400/10 hover:border-blue-400/30',
+    green: 'hover:text-green-400 hover:bg-green-400/10 hover:border-green-400/30',
+    gray: 'hover:text-gray-300 hover:bg-gray-300/10 hover:border-gray-300/30',
+  };
+
+  return (
+    <motion.a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      whileHover={{ scale: 1.05, y: -2 }}
+      whileTap={{ scale: 0.95 }}
+      className={`group flex flex-col items-center gap-3 p-6 rounded-2xl bg-white/5 border border-white/10 transition-all duration-300 ${colorMap[color]}`}
+    >
+      <div className="w-12 h-12 rounded-full bg-black/40 flex items-center justify-center group-hover:scale-110 transition-transform">
+        {typeof Icon === 'function' && Icon.name === 'FaWhatsapp' ? (
+          <Icon size={24} />
+        ) : (
+          <Icon className="w-6 h-6" />
+        )}
+      </div>
+      <span className="text-sm font-bold text-slate-400 group-hover:text-white transition-colors uppercase tracking-wider">
+        {label}
+      </span>
+    </motion.a>
   );
 }
 
